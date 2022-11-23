@@ -22,16 +22,16 @@ func (u *StudentHandler) AddStudent(student model.Student) error {
 	return nil
 }
 
-func (u *StudentHandler) ReadStudent() ([]model.Student, error) {
+func (u *StudentHandler) ReadStudent() ([]model.StudentView, error) {
 	rows, err := u.db.Table("students").Where("deleted_at IS NULL").Select("id, username, grade").Rows()
 	if err != nil {
 		return nil, err
 	}
 
-	var listTodo []model.Student
+	var students []model.StudentView
 	for rows.Next() {
-		u.db.ScanRows(rows, &listTodo)
+		u.db.ScanRows(rows, &students)
 	}
 
-	return listTodo, nil
+	return students, nil
 }
