@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <h1>Hello from Fly</h1>
+    <h2>I'm running in the {{.Region}} region</h2>
+
+    <ul>
+    {{range $val := .Data}}
+      <li>
+        <ul>
+          <li>Name: {{ .Name }}</li>
+          <li>Age: {{ .Age }}</li>
+        </ul>
+      </li>
+      <br />
+    {{else}} Invalid "struct" Users harus berupa array! {{end}}
+    </ul>
+</body>
+</html>
